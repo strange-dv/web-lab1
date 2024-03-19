@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ShoppingCart = ({ cartItems, removeFromCart }) => {
   return (
@@ -10,7 +11,11 @@ const ShoppingCart = ({ cartItems, removeFromCart }) => {
         <ul>
           {cartItems.map((item) => (
             <li key={item.id}>
-              <p>{item.name} - ${item.price}{' '} x {item.quantity}</p>
+              <p>
+              <Link to={`/product/${item.id}`} className="details-link">
+                  {item.name} - ${item.price}{' '} x {item.quantity}
+              </Link>
+              </p>
               <button onClick={() => removeFromCart(item)}>Remove</button>
             </li>
           ))}
